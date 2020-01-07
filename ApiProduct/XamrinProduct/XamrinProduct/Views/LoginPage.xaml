@@ -6,10 +6,53 @@
              mc:Ignorable="d"
              x:Class="XamrinProduct.Views.LoginPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+            BackgroundColor="NavajoWhite"
+            >
+            <StackLayout
+                Padding="25"
+                BackgroundColor="CadetBlue">
+                <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                        
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="E-mail:"
+                        TextColor="Black"
+                        VerticalTextAlignment="Center">
+                </Label>
+                <Entry
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Placeholder="ejemplo@correo.com">
+                </Entry>
+
+                <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Text="Password:"
+                        TextColor="Black"
+                        VerticalTextAlignment="Center">
+                </Label>
+                <Entry
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Placeholder="...">
+                </Entry>
+                </Grid>
+                <ActivityIndicator>
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="WhiteSmoke"
+                    Text="Login"
+                    TextColor="Black">
+                </Button>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
