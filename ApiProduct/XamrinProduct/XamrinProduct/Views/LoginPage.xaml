@@ -29,7 +29,7 @@
                     <Entry
                         Grid.Row="0"
                         Grid.Column="1"
-                        Placeholder="ejemplo@correo.com"
+                        Placeholder="example@mail.com"
                         Text="{Binding Email,Mode=TwoWay}">
                     </Entry>
 
@@ -44,7 +44,7 @@
                         Grid.Row="1"
                         Grid.Column="1"
                         Placeholder="..."
-                        Text="{Binding Email,Mode=TwoWay}">
+                        Text="{Binding Password,Mode=TwoWay}">
                     </Entry>
                 </Grid>
                 <ActivityIndicator
@@ -54,7 +54,7 @@
                     BackgroundColor="WhiteSmoke"
                     Text="Login"
                     TextColor="Black"
-                    Command="{Binding LoginCommand.Mode=TwoWay}"
+                    Command="{Binding LoginCommand,Mode=TwoWay}"
                     IsEnabled="{Binding IsEnabled}">
                 </Button>
             </StackLayout>
