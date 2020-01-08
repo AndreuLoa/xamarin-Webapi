@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              x:Class="XamrinProduct.Views.LoginPage">
     <ContentPage.Content>
         <StackLayout
@@ -18,39 +19,43 @@
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label
-                        
+                    <Label
                         Grid.Row="0"
                         Grid.Column="0"
                         Text="E-mail:"
                         TextColor="Black"
                         VerticalTextAlignment="Center">
-                </Label>
-                <Entry
+                    </Label>
+                    <Entry
                         Grid.Row="0"
                         Grid.Column="1"
-                        Placeholder="ejemplo@correo.com">
-                </Entry>
+                        Placeholder="ejemplo@correo.com"
+                        Text="{Binding Email,Mode=TwoWay}">
+                    </Entry>
 
-                <Label
+                    <Label
                         Grid.Row="1"
                         Grid.Column="0"
                         Text="Password:"
                         TextColor="Black"
                         VerticalTextAlignment="Center">
-                </Label>
-                <Entry
+                     </Label>
+                    <Entry
                         Grid.Row="1"
                         Grid.Column="1"
-                        Placeholder="...">
-                </Entry>
+                        Placeholder="..."
+                        Text="{Binding Email,Mode=TwoWay}">
+                    </Entry>
                 </Grid>
-                <ActivityIndicator>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning}">
                 </ActivityIndicator>
                 <Button
                     BackgroundColor="WhiteSmoke"
                     Text="Login"
-                    TextColor="Black">
+                    TextColor="Black"
+                    Command="{Binding LoginCommand.Mode=TwoWay}"
+                    IsEnabled="{Binding IsEnabled}">
                 </Button>
             </StackLayout>
         </StackLayout>
