@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using XamrinProduct.ViewModels;
-
-namespace XamrinProduct.Interfaces
+﻿namespace XamrinProduct.ViewModels
 {
+    using Models;
+    using System;
+    using System.Collections.ObjectModel;
+    using ViewModels;
     public class InstanceLocator
     {
         #region Properties

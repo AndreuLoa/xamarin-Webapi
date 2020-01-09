@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:infra="clr-namespace:XamrinProduct.Interfaces"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:infra="clr-namespace:XamrinProduct.App.Interfaces"
+             xmlns:infra1="clr-namespace:XamrinProduct.ViewModels"
              mc:Ignorable="d"
              x:Class="XamrinProduct.App">
     <Application.Resources>
         <ResourceDictionary>
-            <infra:InstanceLocator x:Key="Locator"/>
+            <infra1:InstanceLocator x:Key="Locator"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

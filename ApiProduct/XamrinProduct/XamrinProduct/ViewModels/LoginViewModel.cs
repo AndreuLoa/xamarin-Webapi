@@ -1,19 +1,35 @@
-﻿using GalaSoft.MvvmLight.Command;
-using System;
+﻿
+
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.Input;
+
+
 
 namespace XamrinProduct.ViewModels
 {
-    class LoginViewModel:BaseViewModel
+    using GalaSoft.MvvmLight.Command;
+
+    using System;
+
+    using System.Windows.Input;
+
+    using XamrinProduct.Services;
+
+    using Xamarin.Forms;
+
+    using XamrinProduct.Models;
+
+    using XamrinProduct.Views;
+
+
+    public class LoginViewModel:BaseViewModel
     {
         #region Attributes
         string email;
         string password;
         bool isrunning;
         bool isenabled;
-
+        ApiService apiService;
         #endregion
 
         #region Properties
@@ -92,9 +108,54 @@ namespace XamrinProduct.ViewModels
             IsRunning = true;
             IsEnabled = false;
 
-           
+            var conexion = await this.apiService.CheckConnection();
+            if (!conexion.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert("ERROR",
+                                                conexion.Message,
+                                                "Accept");
+                return;
+            }
+
+            TokenResponse token = await this.apiService.GetToken(
+                   "https://localhost:44356",
+                   this.Email,
+                   this.Password);
+            if (token == null)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                   "ERROR",
+                   "Something was wrong, please try later.",
+                   "Accept");
+                return;
+            }
+
+            if(string.IsNullOrEmpty(token.AccessToken))
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                   "ERROR",
+                   token.ErrorDescription,
+                   "Accept");
+                this.Password = String.Empty;
+                return;
+            }
+
+            MainViewModel mainViewModel = MainViewModel.GetInstance();
+            mainViewModel.Token = token.AccessToken;
+            mainViewModel.TokenType = token.TokenType;
+
+            Application.Current.MainPage = new NavigationPage(new ProductPage());
+            IsRunning = false;
+            IsEnabled = true;
         }
         #endregion
+
 
     }
 }

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using XamrinProduct.Models;
+using System;
+using System.Collections.ObjectModel;
 
 namespace XamrinProduct.ViewModels
 {
-    using Models;
-    using System;
-    using System.Collections.ObjectModel;
+  
 
     public class MainViewModel
     {
